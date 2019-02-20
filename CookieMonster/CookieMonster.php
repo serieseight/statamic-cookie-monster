@@ -4,8 +4,10 @@ namespace Statamic\Addons\CookieMonster;
 
 class CookieMonster
 {
-    public static function put($key, $value, $minutes = 0, $path = '/')
+    public static function put($key, $value, $expires = '1 day', $path = '/')
     {
+        $minutes = strtotime($expires);
+
         setcookie($key, $value, $minutes, $path);
     }
 

@@ -2,7 +2,6 @@
 
 namespace Statamic\Addons\CookieMonster;
 
-use Carbon\Carbon;
 use Statamic\Extend\Tags;
 
 class CookieMonsterTags extends Tags
@@ -14,9 +13,9 @@ class CookieMonsterTags extends Tags
      */
     public function put()
     {
-        $minutes = Carbon::parse($this->get('expires'), '1 day')->getTimestamp();
+        $expires = $this->get('expires', $this->getConfig('expires'));
 
-        CookieMonster::put($this->get('key'), $this->get('value'), $minutes);
+        CookieMonster::put($this->get('key'), $this->get('value'), $expires);
     }
 
     /**
