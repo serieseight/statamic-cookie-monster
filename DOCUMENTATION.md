@@ -22,6 +22,8 @@ This tag allows you to store a cookie as a key/value pair, expiring after the gi
 | `value` | The value of the cookie (do not store sensitive information). |
 | `expires` | English textual datetime that is supported by [PHP's datetime format](http://php.net/manual/en/datetime.formats.php), e.g: `1 hour` or `30 days`. |
 
+**Example**
+
 ```html
 {{ cookie_monster:put key="loves" value="cookies" expires="30 days" }}
 ```
@@ -35,6 +37,8 @@ This tag will get a cookie's value using its key (nothing will be returned if th
 | Name | Description |
 |------|-------------|
 | `key` | The name of the cookie. |
+
+**Example**
 
 ```html
 {{ cookie_monster:retrieve key="loves" }} // returns "cookies"
@@ -50,6 +54,8 @@ This tag allows you to check if a cookie exists by returning a boolean.
 |------|-------------|
 | `key` | The name of the cookie. |
 
+**Example**
+
 ```html
 {{ if {cookie_monster:check key="loves"} }}
   // User loves something!
@@ -58,13 +64,17 @@ This tag allows you to check if a cookie exists by returning a boolean.
 
 ### Middleware
 
-You can configure which params to listen for and the cookie expiry time via `CP > Configure > Addons > CookieMonster`.
+You can configure which parameters to listen for, as well as set the cookie expiry time, via `CP > Configure > Addons > CookieMonster`
 
-Note: all cookies are set using PHP's `setcookies()` function, meaning they're **not** encrypted by Statamic/Laravel and will therefore be accessible on client-side via JS (this is by design).
+**Example**
+
+If `loves` is added to CookieMonster's settings, and a user hits the URL `https://domain.com?loves=cookies`, then CookieMonster's middleware will automatically set a cookie of `loves=cookies`. This will be immediately available when the page loads, allowing you to fetch the cookie via JS right away. Params that haven't been added to CookieMonster's settings will be ignored.
+
+_Note: all cookies are set using PHP's `setcookies()` function, meaning they're **not** encrypted by Statamic/Laravel and will therefore be accessible on client-side via JS (this is by design)._
 
 ## Settings
 
 | Name | Description |
 |------|-------------|
-| `parameters` | List of URL params to automatically set as a cookie. |
+| `parameters` | List of URL parameters to automatically set as a cookie. |
 | `expires` | English textual datetime that is supported by [PHP's datetime format](http://php.net/manual/en/datetime.formats.php), e.g: `1 hour` or `30 days`. |
