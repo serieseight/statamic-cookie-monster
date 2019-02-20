@@ -1,6 +1,7 @@
 fields:
   parameters:
     type: list
-  minutes:
+  expires:
     type: text
-    display: Expiry (minutes)
+    display: Expires After
+    instructions: "Parses any English textual datetime supported by [PHP's datetime format](http://php.net/manual/en/datetime.formats.php), e.g: `1 hour` or `30 days`"
