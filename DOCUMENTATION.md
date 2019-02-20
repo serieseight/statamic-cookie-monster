@@ -12,7 +12,7 @@ There are 3 tags available to `put`, `retrieve` and `check` cookies:
 
 #### Put
 
-This tag allows you to store a cookie as a key/value pair, expiring after the given amount of time (you can set a default expiry time via CookieMonster's settings).
+This tag allows you to store a cookie as a key/value pair, expiring after the given amount of time (you can set a default expiry time via Cookie Monster's settings).
 
 **Params**
 
@@ -57,8 +57,8 @@ This tag allows you to check if a cookie exists by returning a boolean.
 **Example**
 
 ```html
-{{ if {cookie_monster:check key="loves"} }}
-  // User loves something!
+{{ if ! {cookie_monster:check key="loves"} }}
+  // User doesn't love anything :(
 {{ /if }}
 ```
 
@@ -68,7 +68,7 @@ You can configure which parameters to listen for, as well as set the cookie expi
 
 **Example**
 
-If `loves` is added to CookieMonster's settings, and a user hits the URL `https://domain.com?loves=cookies`, then CookieMonster's middleware will automatically set a cookie of `loves=cookies`. This will be immediately available when the page loads, allowing you to fetch the cookie via JS right away. Params that haven't been added to CookieMonster's settings will be ignored.
+If `loves` is added to Cookie Monster's settings, and a user hits the URL `https://domain.com?loves=cookies`, then Cookie Monster's middleware will automatically set a cookie of `loves=cookies`. This will be immediately available when the page loads, allowing you to fetch the cookie via JS right away. Params that haven't been added to Cookie Monster's settings will be ignored.
 
 _Note: all cookies are set using PHP's `setcookies()` function, meaning they're **not** encrypted by Statamic/Laravel and will therefore be accessible on client-side via JS (this is by design)._
 
