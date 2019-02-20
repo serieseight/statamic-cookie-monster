@@ -1,0 +1,6 @@
+fields:
+  parameters:
+    type: list
+  minutes:
+    type: text
+    display: Expiry (minutes)
