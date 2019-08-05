@@ -30,7 +30,9 @@ class CookieMonsterMiddleware
 
     public function setParamCookies($params)
     {
-        collect($params)->flip()->filter(function ($key) {
+        collect($params)->filter(function ($value) {
+            return is_string($value);
+        })->flip()->filter(function ($key) {
             return in_array($key, $this->parameters);
         })->each(function ($key, $value) {
             CookieMonster::put($key, $value, $this->expires);
