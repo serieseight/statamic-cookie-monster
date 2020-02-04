@@ -20,4 +20,14 @@ class CookieMonster
     {
         return !! self::get($key);
     }
+
+    public static function hash($value)
+    {
+        return md5($value);
+    }
+
+    public static function checkHash($key)
+    {
+        return self::check(self::hash($key));
+    }
 }

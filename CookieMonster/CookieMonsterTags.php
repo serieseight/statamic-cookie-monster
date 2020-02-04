@@ -31,4 +31,20 @@ class CookieMonsterTags extends Tags
     {
         return CookieMonster::check($this->get('key'));
     }
+
+    /**
+     * The {{ cookie_monster:hash }} tag
+     */
+    public function hash()
+    {
+        return CookieMonster::hash($this->get('value'));
+    }
+
+    /**
+     * The {{ cookie_monster:check_hash }} tag
+     */
+    public function checkHash()
+    {
+        return CookieMonster::checkHash($this->get('key'));
+    }
 }
