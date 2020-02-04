@@ -62,6 +62,64 @@ This tag allows you to check if a cookie exists by returning a boolean.
 {{ /if }}
 ```
 
+#### Hash
+
+This tag allows you to hash a value using md5, this can be useful to automatically invalidate a cookie if the input changes (eg: the text in a callout banner).
+
+**Params**
+
+| Name | Description |
+|------|-------------|
+| `value` | The value to be hashed. |
+
+**Example**
+
+```html
+{{ cookie_monster:hash value="lorem ipsum" }}
+
+// or
+
+{{ cookie_monster:hash :value="some_field" }}
+```
+
+**Usage**
+
+```html
+{{ if ! {cookie_monster:check key="{cookie_monster:hash :value="some_field"}"} }}
+  // User doesn't have cookie for "some_field"
+{{ /if }}
+```
+
+Note: see next tag for a nicer way to write this check.
+
+#### Check Hash
+
+This tag is syntactic sugar for when you're using the `check` and `hash` tags together.
+
+**Params**
+
+| Name | Description |
+|------|-------------|
+| `key` | The unhashed name of the cookie. |
+
+**Example**
+
+```html
+{{ cookie_monster:check_hash key="lorem ipsum" }}
+
+// or
+
+{{ cookie_monster:check_hash :key="some_field" }}
+```
+
+**Usage**
+
+```html
+{{ if ! {cookie_monster:check_hash :key="some_field"} }}
+  // User doesn't have cookie for "some_field"
+{{ /if }}
+```
+
 ### Middleware
 
 You can configure which parameters to listen for, as well as set the cookie expiry time, via `CP > Configure > Addons > CookieMonster`

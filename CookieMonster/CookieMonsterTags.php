@@ -8,8 +8,6 @@ class CookieMonsterTags extends Tags
 {
     /**
      * The {{ cookie_monster:put }} tag
-     *
-     * @return array
      */
     public function put()
     {
@@ -20,8 +18,6 @@ class CookieMonsterTags extends Tags
 
     /**
      * The {{ cookie_monster:retrieve }} tag
-     *
-     * @return array
      */
     public function retrieve()
     {
@@ -30,11 +26,25 @@ class CookieMonsterTags extends Tags
 
     /**
      * The {{ cookie_monster:check }} tag
-     *
-     * @return array
      */
     public function check()
     {
         return CookieMonster::check($this->get('key'));
+    }
+
+    /**
+     * The {{ cookie_monster:hash }} tag
+     */
+    public function hash()
+    {
+        return CookieMonster::hash($this->get('value'));
+    }
+
+    /**
+     * The {{ cookie_monster:check_hash }} tag
+     */
+    public function checkHash()
+    {
+        return CookieMonster::checkHash($this->get('key'));
     }
 }
