@@ -8,8 +8,6 @@ class CookieMonsterTags extends Tags
 {
     /**
      * The {{ cookie_monster:put }} tag
-     *
-     * @return array
      */
     public function put()
     {
@@ -20,8 +18,6 @@ class CookieMonsterTags extends Tags
 
     /**
      * The {{ cookie_monster:retrieve }} tag
-     *
-     * @return array
      */
     public function retrieve()
     {
@@ -30,8 +26,6 @@ class CookieMonsterTags extends Tags
 
     /**
      * The {{ cookie_monster:check }} tag
-     *
-     * @return array
      */
     public function check()
     {
